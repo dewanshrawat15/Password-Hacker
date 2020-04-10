@@ -1,0 +1,29 @@
+<h2>Description</h2>
+
+<p>Looks like you can already call yourself a hacker! However, the situation gets more complicated: the admin improves the server and our simple brute force attack is no longer working. Well, this shouldn&#39;t hold you back: you can provide your program with a prepared&nbsp; <a href="https://stepik.org/media/attachments/lesson/255258/passwords.txt" rel="noopener noreferrer nofollow">dictionary of typical passwords</a>.&nbsp;</p>
+
+<p>That&#39;s not all:&nbsp;the admin decided to outsmart us and changed the case of some letters in the new password so that we could not crack it using the password dictionary. Let&#39;s outsmart the admin and try all possible combinations of upper and lower case for each letter for&nbsp;all words of the password dictionary. We won&#39;t have to try too&nbsp;much&nbsp;since&nbsp;for a 6-letter&nbsp;word&nbsp;you&#39;ll get only 64 possible combinations.</p>
+
+<p>Now you need not only to try each element of the dictionary but also change the case of some letters to find the correct password.</p>
+
+<p>This has increased the time of hacking greatly, so using brute force is probably not an option. Use the dictionary of standard passwords, and do not forget to try changing the cases of different letters. For example, there is a word &lsquo;qwerty&rsquo; in the dictionary, but the cunning admin sets it to &lsquo;qWeRTy&rsquo;. Your program should make it possible to hack such passwords, too.</p>
+
+<h2>Objectives</h2>
+
+<p>In this stage, you should write a program that:</p>
+
+<ol>
+	<li>Parses the command line and gets two arguments that are&nbsp;IP address and port.</li>
+	<li>Finds the correct password using the list of typical passwords.</li>
+	<li>Prints the password&nbsp;it found.</li>
+</ol>
+
+<p>Note that here and throughout the project, the password is different every time you check your code.</p>
+
+<h2>Example</h2>
+
+<p>The greater-than symbol&nbsp;followed by a space (<code>&gt;&nbsp;</code>) represents the user input. Note that it&#39;s not part of the input.</p>
+
+<pre>
+<code class="language-no-highlight">&gt; python hack.py localhost 9090
+qWeRTy</code></pre>
