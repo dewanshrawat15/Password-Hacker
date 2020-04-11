@@ -131,9 +131,9 @@ files:
   text: |
     # write your code here
   learner_created: false
-- name: hacking/passwords.txt
+- name: passwords.txt
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/projects/80/stages/444/implement
-status: Unchecked
-record: -1
+status: Solved
+record: 3
