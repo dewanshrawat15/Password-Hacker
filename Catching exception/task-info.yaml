@@ -185,9 +185,6 @@ files:
 - name: logins.txt
   visible: true
   learner_created: true
-- name: passwords.txt
-  visible: true
-  learner_created: true
 feedback_link: https://hyperskill.org/projects/80/stages/445/implement
 status: Solved
 record: 4
